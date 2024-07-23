@@ -8,6 +8,13 @@ function sortear() {
     let de = parseInt(document.getElementById("de").value);
     let ate = parseInt(document.getElementById("ate").value);
     let numeroAleatorio;
+    if (de >= ate) {
+        document.getElementById("resultado").innerHTML = '<label class="texto__paragrafo">Campo "Do número" deve ser inferior ao campo "Até o número". Tente novamente!</label>';
+        return alterarStatusBotao()
+    } else if (ate - de <= quantidade) {
+        document.getElementById("resultado").innerHTML = '<label class="texto__paragrafo">Intervalo entre números deve ser superior à quantidade de números sorteados. Tente novamente!</label>';
+        return alterarStatusBotao()
+    }
     for (let i = 0; i < quantidade; i++) {
         numeroAleatorio = gerarNumeroAleatorio(de, ate);
         while (listaSorteados.includes(numeroAleatorio)) {
